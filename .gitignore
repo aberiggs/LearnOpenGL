@@ -1,0 +1,4 @@
+*/*.out
+*/*/cmake/*
+**/.DS_Store
+**/cmake
