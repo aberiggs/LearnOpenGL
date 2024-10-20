@@ -52,7 +52,7 @@ void createVertexShader() {
   glVertexAttribPointer(0, 3, GL_FLOAT, GL_FALSE, 3 * sizeof(float), (void *)0);
   glEnableVertexAttribArray(0);
 
-  // Actual vetex shader
+  // Actual vertex shader
   vertexShader = glCreateShader(GL_VERTEX_SHADER);
 
   glShaderSource(vertexShader, 1, &vertexShaderSource, NULL);
@@ -75,8 +75,6 @@ void createShaderProgram() {
   glDeleteShader(vertexShader);
   glDeleteShader(fragmentShader);
 }
-
-void generateVAO() {}
 
 int main() {
   glfwInit();

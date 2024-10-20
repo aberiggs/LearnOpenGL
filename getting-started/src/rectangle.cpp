@@ -1,4 +1,4 @@
-/* Learning OpenGL by drawing a triangle */
+/* Learning OpenGL by drawing a rectangle */
 
 #include <glad/glad.h>
 #include <iostream>
@@ -7,7 +7,6 @@
 
 // Vertex data format: <x,y,z>
 float vertices[] = {
-    // First triangle
      0.5f,  0.5f, 0.0f, // Top right
      0.5f, -0.5f, 0.0f, // Bottom right
     -0.5f, -0.5f, 0.0f, // Bottom left
@@ -67,7 +66,7 @@ void createVertexShader() {
   glVertexAttribPointer(0, 3, GL_FLOAT, GL_FALSE, 3 * sizeof(float), (void *)0);
   glEnableVertexAttribArray(0);
 
-  // Actual vetex shader
+  // Actual vertex shader
   vertexShader = glCreateShader(GL_VERTEX_SHADER);
 
   glShaderSource(vertexShader, 1, &vertexShaderSource, NULL);
@@ -90,8 +89,6 @@ void createShaderProgram() {
   glDeleteShader(vertexShader);
   glDeleteShader(fragmentShader);
 }
-
-void generateVAO() {}
 
 int main() {
   glfwInit();
