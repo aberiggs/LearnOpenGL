@@ -1,5 +1,3 @@
-/* Learning OpenGL by drawing a triangle */
-
 #include <glad/glad.h>
 #include <iostream>
 
@@ -31,17 +29,20 @@ const char *fragmentShaderSource =
     " FragColor = ourColor;\n"
     "}\0";
 
-void framebuffer_size_callback(GLFWwindow *window, int width, int height) {
+void framebuffer_size_callback(GLFWwindow *window, int width, int height)
+{
   glViewport(0, 0, width, height);
 }
 
-void processInput(GLFWwindow *window) {
+void processInput(GLFWwindow *window)
+{
   if (glfwGetKey(window, GLFW_KEY_ESCAPE) == GLFW_PRESS)
     glfwSetWindowShouldClose(window, true);
 }
 
 // NOTE: Call before creating fragment shader
-void createVertexShader() {
+void createVertexShader()
+{
   glGenBuffers(1, &VBO);
   glGenVertexArrays(1, &VAO);
 
@@ -61,13 +62,15 @@ void createVertexShader() {
 }
 
 // NOTE: Call before creating shader program
-void createFragmentShader() {
+void createFragmentShader()
+{
   fragmentShader = glCreateShader(GL_FRAGMENT_SHADER);
   glShaderSource(fragmentShader, 1, &fragmentShaderSource, NULL);
   glCompileShader(fragmentShader);
 }
 
-void createShaderProgram() {
+void createShaderProgram()
+{
   shaderProgram = glCreateProgram();
   glAttachShader(shaderProgram, vertexShader);
   glAttachShader(shaderProgram, fragmentShader);
@@ -77,7 +80,8 @@ void createShaderProgram() {
   glDeleteShader(fragmentShader);
 }
 
-int main() {
+int main()
+{
   glfwInit();
   glfwWindowHint(GLFW_CONTEXT_VERSION_MAJOR, 3);
   glfwWindowHint(GLFW_CONTEXT_VERSION_MINOR, 3);
@@ -85,14 +89,16 @@ int main() {
   glfwWindowHint(GLFW_OPENGL_FORWARD_COMPAT, GL_TRUE); // MacOS
 
   GLFWwindow *window = glfwCreateWindow(800, 600, "Learn OpenGL", NULL, NULL);
-  if (window == NULL) {
+  if (window == NULL)
+  {
     std::cout << "Failed to create GLFW window\n";
     glfwTerminate();
     return -1;
   }
   glfwMakeContextCurrent(window);
 
-  if (!gladLoadGLLoader((GLADloadproc)glfwGetProcAddress)) {
+  if (!gladLoadGLLoader((GLADloadproc)glfwGetProcAddress))
+  {
     std::cout << "Failed to initialize GLAD\n";
     return -1;
   }
@@ -106,7 +112,8 @@ int main() {
   createShaderProgram();
 
   // Render loop
-  while (!glfwWindowShouldClose(window)) {
+  while (!glfwWindowShouldClose(window))
+  {
     // Input
     processInput(window);
 

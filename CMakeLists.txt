@@ -82,7 +82,7 @@ set(1.getting_started
     3.1.shaders_uniform
     3.2.shaders_interpolation
     # 3.3.shaders_class
-    # 4.1.textures
+    4.1.textures
     # 4.2.textures_combined
     # 4.4.textures_exercise2
     # 4.5.textures_exercise3
@@ -192,8 +192,8 @@ configure_file(configuration/root_directory.h.in configuration/root_directory.h)
 include_directories(${CMAKE_BINARY_DIR}/configuration)
 
 # first create relevant static libraries required for other projects
-# add_library(STB_IMAGE "src/stb_image.cpp")
-# set(LIBS ${LIBS} STB_IMAGE)
+add_library(STB_IMAGE "src/stb_image.cpp")
+set(LIBS ${LIBS} STB_IMAGE)
 
 add_library(GLAD "src/glad.c")
 set(LIBS ${LIBS} GLAD)

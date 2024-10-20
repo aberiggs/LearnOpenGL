@@ -1,5 +1,3 @@
-/* Learning OpenGL by drawing a triangle */
-
 #include <glad/glad.h>
 #include <iostream>
 
