@@ -3,7 +3,6 @@ build/*
 bin/*
 */*/cmake/*
 **/.DS_Store
-**/cmake
 CMakeLists.txt.user
 CMakeFiles
 CMakeScripts
