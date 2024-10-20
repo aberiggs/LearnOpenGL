@@ -1,5 +1,5 @@
 ## LearnOpenGL
-This repository is to store exercises from the LearnOpenGL book along with any other small projects I build with OpenGL.
+This repository is to store exercises from the [LearnOpenGL](https://learnopengl.com/) book along with any other small projects I build with OpenGL.
 
 ### Building
 Currently set up for building through the command line.

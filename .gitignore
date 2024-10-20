@@ -1,7 +1,5 @@
-*/*.out
 build/*
 bin/*
-*/*/cmake/*
 **/.DS_Store
 CMakeLists.txt.user
 CMakeFiles
@@ -15,3 +13,4 @@ CTestTestfile.cmake
 _deps
 CMakeUserPresets.json
 configuration/root_directory.h
+.vscode/*
