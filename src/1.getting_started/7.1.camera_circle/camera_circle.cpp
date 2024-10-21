@@ -50,7 +50,7 @@ int main()
   glEnable(GL_DEPTH_TEST);
 
   // Build and compile shader program
-  Shader ourShader("6.3.coordinate_systems.vert", "6.3.coordinate_systems.frag");
+  Shader ourShader("7.1.camera.vert", "7.1.camera.frag");
 
   // Vertex data
   float vertices[] = {
@@ -179,7 +179,6 @@ int main()
   ourShader.setInt("texture1", 0);
   ourShader.setInt("texture2", 1);
 
-
   // Render loop
   while (!glfwWindowShouldClose(window))
   {
@@ -198,9 +197,11 @@ int main()
     // Activate the shader program
     ourShader.use();
 
-
+    const float radius = 10.0f;
+    float camX = sin(glfwGetTime()) * radius;
+    float camZ = cos(glfwGetTime()) * radius;
     glm::mat4 view = glm::mat4(1.0f);
-    view = glm::translate(view, glm::vec3(0.0f, 0.0f, -3.0f)); // Move camera back (by moving the scene forward)
+    view = glm::lookAt(glm::vec3(camX, 0.0f, camZ), glm::vec3(0.0f, 0.0f, 0.0f), glm::vec3(0.0f, 1.0f, 0.0f));
 
     glm::mat4 projection = glm::mat4(1.0f);
     projection = glm::perspective(glm::radians(45.0f), 800.0f / 600.0f, 0.1f, 100.0f);
@@ -215,7 +216,7 @@ int main()
       glm::mat4 model = glm::mat4(1.0f);
       model = glm::translate(model, cubePositions[i]);
       float angle = 20.0f * i;
-      model = glm::rotate(model, (float)glfwGetTime() * glm::radians(angle), glm::vec3(1.0f, 0.3f, 0.5f)); // Rotate obj
+      model = glm::rotate(model, glm::radians(angle), glm::vec3(1.0f, 0.3f, 0.5f)); // Rotate obj
     
       ourShader.setMat4("model", glm::value_ptr(model));
     
