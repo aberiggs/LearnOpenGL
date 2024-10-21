@@ -26,8 +26,12 @@ public:
         try 
         {
             // open files
+            std::cout << "trying - " << vertexPath << "\n";
             vShaderFile.open(vertexPath);
+            std::cout << "good\n";
+            std::cout << "trying - " << fragmentPath << "\n";
             fShaderFile.open(fragmentPath);
+            std::cout << "good\n";
             std::stringstream vShaderStream, fShaderStream;
             // read file's buffer contents into streams
             vShaderStream << vShaderFile.rdbuf();

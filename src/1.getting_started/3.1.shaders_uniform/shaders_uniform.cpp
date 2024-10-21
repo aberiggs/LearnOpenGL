@@ -1,5 +1,6 @@
 #include <glad/glad.h>
 #include <iostream>
+#include <cmath>
 
 #include <GLFW/glfw3.h>
 
