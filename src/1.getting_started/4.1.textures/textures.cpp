@@ -45,7 +45,7 @@ int main()
   }
 
   // Build and compile shader program
-  Shader ourShader("4.1.texture.vs", "4.1.texture.fs");
+  Shader ourShader("4.1.texture.vert", "4.1.texture.frag");
 
   // Vertex data
   float vertices[] = {

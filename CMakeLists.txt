@@ -87,7 +87,7 @@ set(1.getting_started
     # 4.4.textures_exercise2
     # 4.5.textures_exercise3
     # 4.6.textures_exercise4
-    # 5.1.transformations
+    5.1.transformations
     # 5.2.transformations_exercise2
     # 6.1.coordinate_systems
     # 6.2.coordinate_systems_depth
@@ -239,7 +239,8 @@ function(create_project_from_sources chapter demo)
     # copy shader files to build directory
     file(GLOB SHADERS
              "src/${chapter}/${demo}/*.vs"
-             # "src/${chapter}/${demo}/*.frag"
+             "src/${chapter}/${demo}/*.frag"
+             "src/${chapter}/${demo}/*.vert"
              "src/${chapter}/${demo}/*.fs"
              "src/${chapter}/${demo}/*.tcs"
              "src/${chapter}/${demo}/*.tes"

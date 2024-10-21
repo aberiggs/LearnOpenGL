@@ -14,3 +14,4 @@ _deps
 CMakeUserPresets.json
 configuration/root_directory.h
 .vscode/*
+*.a
