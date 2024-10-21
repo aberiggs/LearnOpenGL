@@ -90,6 +90,11 @@ public:
         glUniform1f(glGetUniformLocation(ID, name.c_str()), value); 
     }
 
+    void setMat4(const std::string &name, const float *value) const
+    {
+        glUniformMatrix4fv(glGetUniformLocation(ID, name.c_str()), 1, GL_FALSE, value);
+    }
+
 private:
     // utility function for checking shader compilation/linking errors.
     // ------------------------------------------------------------------------

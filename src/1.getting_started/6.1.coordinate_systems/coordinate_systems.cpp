@@ -48,7 +48,7 @@ int main()
   }
 
   // Build and compile shader program
-  Shader ourShader("5.1.transform.vert", "5.1.transform.frag");
+  Shader ourShader("6.1.coordinate_systems.vert", "6.1.coordinate_systems.frag");
 
   // Vertex data
   float vertices[] = {
@@ -139,6 +139,19 @@ int main()
   ourShader.setInt("texture1", 0);
   ourShader.setInt("texture2", 1);
 
+  glm::mat4 model = glm::mat4(1.0f);
+  model = glm::rotate(model, glm::radians(-55.0f), glm::vec3(1.0f, 0.0f, 0.0f)); // Put object on ground
+
+  glm::mat4 view = glm::mat4(1.0f);
+  view = glm::translate(view, glm::vec3(0.0f, 0.0f, -3.0f)); // Move camera back (by moving the scene forward)
+
+  glm::mat4 projection;
+  projection = glm::perspective(glm::radians(45.0f), 800.0f / 600.0f, 0.1f, 100.0f);
+
+  ourShader.setMat4("model", glm::value_ptr(model));
+  ourShader.setMat4("view", glm::value_ptr(view));
+  ourShader.setMat4("projection", glm::value_ptr(projection));
+
   // Render loop
   while (!glfwWindowShouldClose(window))
   {
@@ -157,11 +170,6 @@ int main()
     // Activate the shader program
     ourShader.use();
 
-    glm::mat4 trans = glm::mat4(1.0f);
-    trans = glm::translate(trans, glm::vec3(0.5f, -0.5f, 0.0f)); // Translate to the right and down
-    trans = glm::rotate(trans, (float)glfwGetTime(), glm::vec3(0.0f, 0.0f, 1.0f)); // Rotate around Z-axis
-    unsigned int transformLoc = glGetUniformLocation(ourShader.ID, "transform");
-    glUniformMatrix4fv(transformLoc, 1, GL_FALSE, glm::value_ptr(trans));
     
     // Draw object
     glBindVertexArray(VAO);
