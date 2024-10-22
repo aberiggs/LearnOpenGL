@@ -94,56 +94,56 @@ int main()
   glEnable(GL_DEPTH_TEST);
 
   // Build and compile shader program
-  Shader objShader("1.colors.vert", "1.colors.frag");
-  Shader lightShader("1.light_cube.vert", "1.light_cube.frag");
+  Shader objShader("2.1.obj.vert", "2.1.obj.frag");
+  Shader lightShader("2.1.light.vert", "2.1.light.frag");
 
   // Vertex data for cube
   float vertices[] = {
-    -0.5f, -0.5f, -0.5f, 
-      0.5f, -0.5f, -0.5f,
-      0.5f,  0.5f, -0.5f,
-      0.5f,  0.5f, -0.5f,
-    -0.5f,  0.5f, -0.5f,
-    -0.5f, -0.5f, -0.5f,
+    -0.5f, -0.5f, -0.5f,  0.0f,  0.0f, -1.0f,
+      0.5f, -0.5f, -0.5f,  0.0f,  0.0f, -1.0f,
+      0.5f,  0.5f, -0.5f,  0.0f,  0.0f, -1.0f,
+      0.5f,  0.5f, -0.5f,  0.0f,  0.0f, -1.0f,
+    -0.5f,  0.5f, -0.5f,  0.0f,  0.0f, -1.0f,
+    -0.5f, -0.5f, -0.5f,  0.0f,  0.0f, -1.0f,
 
-    -0.5f, -0.5f,  0.5f,
-      0.5f, -0.5f,  0.5f,
-      0.5f,  0.5f,  0.5f,
-      0.5f,  0.5f,  0.5f,
-    -0.5f,  0.5f,  0.5f,
-    -0.5f, -0.5f,  0.5f,
+    -0.5f, -0.5f,  0.5f,  0.0f,  0.0f,  1.0f,
+      0.5f, -0.5f,  0.5f,  0.0f,  0.0f,  1.0f,
+      0.5f,  0.5f,  0.5f,  0.0f,  0.0f,  1.0f,
+      0.5f,  0.5f,  0.5f,  0.0f,  0.0f,  1.0f,
+    -0.5f,  0.5f,  0.5f,  0.0f,  0.0f,  1.0f,
+    -0.5f, -0.5f,  0.5f,  0.0f,  0.0f,  1.0f,
 
-    -0.5f,  0.5f,  0.5f,
-    -0.5f,  0.5f, -0.5f,
-    -0.5f, -0.5f, -0.5f,
-    -0.5f, -0.5f, -0.5f,
-    -0.5f, -0.5f,  0.5f,
-    -0.5f,  0.5f,  0.5f,
+    -0.5f,  0.5f,  0.5f, -1.0f,  0.0f,  0.0f,
+    -0.5f,  0.5f, -0.5f, -1.0f,  0.0f,  0.0f,
+    -0.5f, -0.5f, -0.5f, -1.0f,  0.0f,  0.0f,
+    -0.5f, -0.5f, -0.5f, -1.0f,  0.0f,  0.0f,
+    -0.5f, -0.5f,  0.5f, -1.0f,  0.0f,  0.0f,
+    -0.5f,  0.5f,  0.5f, -1.0f,  0.0f,  0.0f,
 
-      0.5f,  0.5f,  0.5f,
-      0.5f,  0.5f, -0.5f,
-      0.5f, -0.5f, -0.5f,
-      0.5f, -0.5f, -0.5f,
-      0.5f, -0.5f,  0.5f,
-      0.5f,  0.5f,  0.5f,
+      0.5f,  0.5f,  0.5f,  1.0f,  0.0f,  0.0f,
+      0.5f,  0.5f, -0.5f,  1.0f,  0.0f,  0.0f,
+      0.5f, -0.5f, -0.5f,  1.0f,  0.0f,  0.0f,
+      0.5f, -0.5f, -0.5f,  1.0f,  0.0f,  0.0f,
+      0.5f, -0.5f,  0.5f,  1.0f,  0.0f,  0.0f,
+      0.5f,  0.5f,  0.5f,  1.0f,  0.0f,  0.0f,
 
-    -0.5f, -0.5f, -0.5f,
-      0.5f, -0.5f, -0.5f,
-      0.5f, -0.5f,  0.5f,
-      0.5f, -0.5f,  0.5f,
-    -0.5f, -0.5f,  0.5f,
-    -0.5f, -0.5f, -0.5f,
+    -0.5f, -0.5f, -0.5f,  0.0f, -1.0f,  0.0f,
+      0.5f, -0.5f, -0.5f,  0.0f, -1.0f,  0.0f,
+      0.5f, -0.5f,  0.5f,  0.0f, -1.0f,  0.0f,
+      0.5f, -0.5f,  0.5f,  0.0f, -1.0f,  0.0f,
+    -0.5f, -0.5f,  0.5f,  0.0f, -1.0f,  0.0f,
+    -0.5f, -0.5f, -0.5f,  0.0f, -1.0f,  0.0f,
 
-    -0.5f,  0.5f, -0.5f,
-      0.5f,  0.5f, -0.5f,
-      0.5f,  0.5f,  0.5f,
-      0.5f,  0.5f,  0.5f,
-    -0.5f,  0.5f,  0.5f,
-    -0.5f,  0.5f, -0.5f
+    -0.5f,  0.5f, -0.5f,  0.0f,  1.0f,  0.0f,
+      0.5f,  0.5f, -0.5f,  0.0f,  1.0f,  0.0f,
+      0.5f,  0.5f,  0.5f,  0.0f,  1.0f,  0.0f,
+      0.5f,  0.5f,  0.5f,  0.0f,  1.0f,  0.0f,
+    -0.5f,  0.5f,  0.5f,  0.0f,  1.0f,  0.0f,
+      -0.5f,  0.5f, -0.5f,  0.0f,  1.0f,  0.0f
   };
 
   glm::vec3 cubePositions[] = {
-    glm::vec3( 1.0f, 1.0f, 1.0f),
+    glm::vec3(0.0f, 0.0f, 0.0f),
   };
 
   // Generate VAO, VBO, and EBO buffer objects
@@ -154,20 +154,24 @@ int main()
   glBindBuffer(GL_ARRAY_BUFFER, VBO);
   glBufferData(GL_ARRAY_BUFFER, sizeof(vertices), vertices, GL_STATIC_DRAW);
   // Position attribute
-  glVertexAttribPointer(0, 3, GL_FLOAT, GL_FALSE, 3 * sizeof(float), (void *)0);
+  glVertexAttribPointer(0, 3, GL_FLOAT, GL_FALSE, 6 * sizeof(float), (void *)0);
   glEnableVertexAttribArray(0);
+  // Normal attribute
+  glVertexAttribPointer(1, 3, GL_FLOAT, GL_FALSE, 6 * sizeof(float), (void *)(3 * sizeof(float)));
+  glEnableVertexAttribArray(1);
 
   unsigned int lightVAO;
   glGenVertexArrays(1, &lightVAO);
   glBindVertexArray(lightVAO);
   glBindBuffer(GL_ARRAY_BUFFER, VBO);
   // Position attribute
-  glVertexAttribPointer(0, 3, GL_FLOAT, GL_FALSE, 3 * sizeof(float), (void *)0);
+  glVertexAttribPointer(0, 3, GL_FLOAT, GL_FALSE, 6 * sizeof(float), (void *)0);
   glEnableVertexAttribArray(0);
 
   objShader.use();
   objShader.setVec3("objectColor", 1.0f, 0.5f, 0.31f);
   objShader.setVec3("lightColor", 1.0f, 1.0f, 1.0f);
+  objShader.setVec3("lightPos", lightPos.x, lightPos.y, lightPos.z);
 
   // Render loop
   while (!glfwWindowShouldClose(window))
